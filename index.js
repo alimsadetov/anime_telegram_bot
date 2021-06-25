@@ -11,7 +11,6 @@ const bot = new TelegramBot(TOKEN, {
 
 //бот отвечает на текстовое сообщение
 bot.on('text', (msg) =>{
-  console.log(msg.text);
   if ((msg.text == 'привет') || (msg.text == 'Привет')){
     bot.sendMessage(msg.chat.id, `Привет, ${msg.chat.first_name}`)
   }
