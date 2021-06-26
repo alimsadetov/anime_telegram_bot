@@ -39,6 +39,7 @@ bot.on('photo', (msg) =>{
   axios.get(url).then( (result) =>{
     let file_path =  result.data.result.file_path;
     let download_url = `https://api.telegram.org/file/bot${TOKEN}/${file_path}`;
+    bot.sendPhoto(msg.chat.id, download_url);
     console.log(download_url);
     let api_url = `https://api.trace.moe/search?cutBorders&anilistInfo&url=${download_url}`;
 
