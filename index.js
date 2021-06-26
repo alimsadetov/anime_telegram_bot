@@ -35,7 +35,7 @@ bot.on('text', (msg) =>{
 //бот отвечает на фото
 bot.on('photo', (msg) =>{
   let url = `https://api.telegram.org/bot${TOKEN}/getFile?file_id=${msg.photo[0].file_id}`;
-  console.log(url);
+  console.log(msg);
   //запрос на api telegram для получения ссылки отправленного фото
   axios.get(url).then( (result) =>{
     let file_path =  result.data.result.file_path;
