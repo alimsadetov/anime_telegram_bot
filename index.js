@@ -1,5 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
+const express = require('express');
+const app     = express();
 
 const TOKEN = '1799360438:AAHq9TI7eokOCSXhhbCQPOrn04nNR9dJfUc';
 
@@ -7,6 +9,16 @@ const bot = new TelegramBot(TOKEN, {
   polling: true
 })
 
+
+app.set('port', (process.env.PORT || 5000));
+
+//For avoidong Heroku $PORT error
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
 
 
 //бот отвечает на текстовое сообщение
